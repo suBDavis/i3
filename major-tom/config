@@ -153,20 +153,27 @@ bindsym Mod1+r mode "resize"
 bar {
         #status_command i3status
         status_command /home/brandon/.config/i3/i3status.sh
-        tray_output HDMI1
+        tray_output eDP1
+        position top
 }
 
 # Set display
-exec --no-startup-id xrandr --auto --output VGA1 --mode 1280x1024 --left-of HDMI1
+# exec --no-startup-id xrandr --auto --output VGA1 --mode 1280x1024 --left-of HDMI1
 
 # Set background
-exec --no-startup-id feh --bg-scale /home/brandon/Pictures/backgrounds/firewatch.png
-
-# Start Franz
-exec --no-startup-id /home/brandon/apps/Franz/Franz
+exec --no-startup-id feh --bg-scale /home/brandon/Pictures/backgrounds/firewatch2.png
 
 # Start InSync
 exec --no-startup-id /usr/bin/insync start
+
+# Network manager
+exec --no-startup-id nm-applet
+
+# GAPS
+gaps inner 10
+gaps outer 5
+# for_window [class="^.*"] border pixel 0 # leave title bar undrawn
+new_window pixel 1
 
 # Media keys
 # Pulse Audio controls
@@ -178,3 +185,5 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+client.focused #32CD32 #008000 #ffffff #2e9ef4 #32CD32

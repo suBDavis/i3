@@ -1,0 +1,19 @@
+ssh-start() {
+  eval `ssh-agent -s`
+}
+ssh-addkeys() {
+  for f in ~/.ssh/*_rsa
+  do
+    ssh-add "$f"
+  done
+}
+pysrc() {
+  source bin/activate
+}
+pywinsrc() {
+  source Scripts/activate
+}
+nmcycle() {
+  # Restart the network manager service
+  sudo service network-manager restart
+}
