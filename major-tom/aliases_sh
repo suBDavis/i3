@@ -17,3 +17,6 @@ nmcycle() {
   # Restart the network manager service
   sudo service network-manager restart
 }
+above() {
+  sudo xrandr --output VGA1 --above eDP1
+}

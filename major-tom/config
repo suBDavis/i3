@@ -32,7 +32,7 @@ bindsym Mod1+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
+bindsym Mod1+d exec --no-startup-id j4-dmenu-desktop
 
 # change focus
 bindsym Mod1+j focus left
@@ -155,6 +155,11 @@ bar {
         status_command /home/brandon/.config/i3/i3status.sh
         tray_output eDP1
         position top
+        height 22
+
+        colors {
+                focused_workspace #32CD32 #008000 #ffffff
+        }
 }
 
 # Set display
@@ -170,10 +175,10 @@ exec --no-startup-id /usr/bin/insync start
 exec --no-startup-id nm-applet
 
 # GAPS
-gaps inner 10
-gaps outer 5
+gaps inner 15
+gaps outer 0
 # for_window [class="^.*"] border pixel 0 # leave title bar undrawn
-new_window pixel 1
+new_window pixel 2
 
 # Media keys
 # Pulse Audio controls
@@ -186,4 +191,5 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-client.focused #32CD32 #008000 #ffffff #2e9ef4 #32CD32
+# Green everything.
+client.focused #32CD32 #008000 #ffffff #32CD32 #32CD32
