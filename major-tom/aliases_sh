@@ -20,3 +20,6 @@ nmcycle() {
 above() {
   sudo xrandr --output VGA1 --above eDP1
 }
+deploy-helpq() {
+  cd ~/gitcode/HELPq && DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy [help.hacknc.com] --settings settings.json 
+}
