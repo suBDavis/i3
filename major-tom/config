@@ -166,7 +166,7 @@ bar {
 # exec --no-startup-id xrandr --auto --output VGA1 --mode 1280x1024 --left-of HDMI1
 
 # Set background
-exec --no-startup-id feh --bg-scale /home/brandon/Pictures/backgrounds/firewatch2.png
+exec --no-startup-id feh --bg-scale /home/brandon/Pictures/backgrounds/Firefly.png
 
 # Start InSync
 exec --no-startup-id /usr/bin/insync start

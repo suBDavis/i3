@@ -1,6 +1,5 @@
-#!/bin/sh
+#!/bin/sh 
 
-case "${1}" in
-  resume|thaw)
-    nmcli r wifi off && nmcli r wifi on ;;
+case $1 in post)
+    service network-manager restart;; 
 esac
