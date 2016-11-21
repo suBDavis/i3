@@ -23,3 +23,6 @@ above() {
 deploy-helpq() {
   cd ~/gitcode/HELPq && DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy [help.hacknc.com] --settings settings.json 
 }
+mountpod() {
+  sudo mount -o uid=1000 /dev/sdb /media/ipod/
+}
