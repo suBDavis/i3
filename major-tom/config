@@ -178,7 +178,7 @@ exec --no-startup-id /usr/bin/nm-applet
 exec --no-startup-id /usr/bin/fluxgui &
 
 # GAPS
-gaps inner 15
+gaps inner 5
 gaps outer 0
 # for_window [class="^.*"] border pixel 0 # leave title bar undrawn
 new_window pixel 2

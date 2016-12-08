@@ -117,3 +117,5 @@ if ! shopt -oq posix; then
 fi
 
 source /home/brandon/.config/brandon/aliases_sh
+# added by travis gem
+[ -f /home/brandon/.travis/travis.sh ] && source /home/brandon/.travis/travis.sh

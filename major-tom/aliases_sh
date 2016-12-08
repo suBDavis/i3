@@ -20,9 +20,23 @@ nmcycle() {
 above() {
   sudo xrandr --output VGA1 --above eDP1
 }
+beside() {
+  sudo xrandr --output VGA1 --right-of eDP1 --mode 1920x1080
+}
 deploy-helpq() {
   cd ~/gitcode/HELPq && DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy [help.hacknc.com] --settings settings.json 
 }
 mountpod() {
   sudo mount -o uid=1000 /dev/sdb /media/ipod/
+}
+cueflac(){
+  # JUST A TEMPLATE
+  mkdir tracks && shnsplit -f *.cue -t %n-%t -d tracks -o flac *.flac
+}
+flactomp3(){
+  for f in *.flac;
+    do
+      base=$(basename "$f" .flac);
+      ffmpeg -i "$f" -ab 196k -ac 2 -ar 48000 "$base.mp3";
+  done;
 }
