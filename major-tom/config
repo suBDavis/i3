@@ -166,22 +166,25 @@ bar {
 # exec --no-startup-id xrandr --auto --output VGA1 --mode 1280x1024 --left-of HDMI1
 
 # Set background
-exec --no-startup-id feh --bg-scale /home/brandon/Pictures/backgrounds/Firefly.png
+exec --no-startup-id feh --bg-scale /home/brandon/Pictures/backgrounds/rocket.jpg
 
 # Start InSync
 exec --no-startup-id /usr/bin/insync start
 
 # Network manager
-exec --no-startup-id /usr/bin/nm-applet
+# exec --no-startup-id /usr/bin/nm-applet
+
+# Wicd
+exec --no-startup-id wicd-client --tray &
 
 # FLUX
 exec --no-startup-id /usr/bin/fluxgui &
 
 # GAPS
-gaps inner 5
+gaps inner 6
 gaps outer 0
 # for_window [class="^.*"] border pixel 0 # leave title bar undrawn
-new_window pixel 2
+new_window pixel 3
 
 # Media keys
 # Pulse Audio controls
@@ -199,4 +202,4 @@ bindsym XF86AudioNext exec  --no-startup-id playerctl next
 bindsym XF86AudioPrev exec  --no-startup-id playerctl previous
 
 # Green everything.
-client.focused #32CD32 #008000 #ffffff #32CD32 #32CD32
+client.focused #1CB53B #28663D #ffffff #1CB53B #1CB53B
