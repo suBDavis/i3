@@ -1,0 +1,86 @@
+alias fucking="sudo";
+ssh-start() {
+  eval `ssh-agent -s`
+}
+ssh-addkeys() {
+  for f in ~/.ssh/*_rsa
+  do
+    ssh-add "$f"
+  done
+}
+pysrc() {
+  source bin/activate
+}
+pywinsrc() {
+  source Scripts/activate
+}
+nmcycle() {
+  # Restart the network manager service
+  sudo service network-manager restart
+}
+above() {
+  sudo xrandr --output VGA1 --above eDP1
+}
+beside() {
+  sudo xrandr --output VGA1 --right-of eDP1 --mode 1920x1080
+}
+deploy-helpq() {
+  cd ~/gitcode/HELPq && DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy [help.hacknc.com] --settings settings.json 
+}
+mountpod() {
+  sudo mount -o uid=1000 /dev/sdb /media/ipod/
+}
+cueflac(){
+  # JUST A TEMPLATE
+  mkdir tracks && shnsplit -f *.cue -t %n-%t -d tracks -o flac *.flac
+}
+flactomp3(){
+  for f in *.flac;
+    do
+      base=$(basename "$f" .flac);
+      ffmpeg -i "$f" -ab 196k -ac 2 -ar 48000 "$base.mp3";
+  done;
+}
+battery(){
+  upower -i /org/freedesktop/UPower/devices/battery_BAT0
+}
+extract () {
+  if [ -f "$1" ] ; then
+    case "$1" in
+      *.tar.bz2) tar xvjf "$1";;
+      *.tar.gz) tar xvzf "$1";;
+      *.bz2) bunzip2 "$1";;
+      *.rar) unrar x "$1";;
+      *.gz) gunzip "$1";;
+      *.tar) tar xvf "$1";;
+      *.tbz2) tar xvjf "$1";;
+      *.tgz) tar xvzf "$1";;
+      *.zip) unzip "$1";;
+      *.Z) uncompress "$1";;
+      *.7z) 7za x "$1";;
+      *.rar) unrar "$1";;
+      *) echo "'$1' cannot be extracted via >extract<" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+vpnup () {
+  sudo systemctl start openvpn
+}
+vpndown () {
+  sudo systemctl stop openvpn
+  sleep 1
+  while true; do
+      ifconfig;
+  done
+}
+gpush () {
+  for o in $(git remote show) do
+    echo "Pushing to $o";
+    git push $o;
+  done; 
+}
+findbigfiles () {
+  find / -xdev -type f -size +100M 2>/dev/null
+}
