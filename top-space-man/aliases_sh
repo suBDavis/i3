@@ -19,7 +19,8 @@ nmcycle() {
   sudo service network-manager restart
 }
 above() {
-  sudo xrandr --output VGA1 --above eDP1
+  xrandr --output DP-1 --scale 2x2 --mode 1920x1080 --fb 3840x4200 --pos 0x0
+  xrandr --output eDP-1 --scale 1x1 --pos 320x2400
 }
 beside() {
   sudo xrandr --output VGA1 --right-of eDP1 --mode 1920x1080
@@ -66,17 +67,13 @@ extract () {
   fi
 }
 vpnup () {
-  sudo systemctl start openvpn
+  sudo openvpn --daemon openvpn --config ~/.ovpn/us368.nordvpn.com.tcp443.ovpn
 }
 vpndown () {
-  sudo systemctl stop openvpn
-  sleep 1
-  while true; do
-      ifconfig;
-  done
+  sudo killall openvpn
 }
 gpush () {
-  for o in $(git remote show) do
+  for o in $(git remote show); do
     echo "Pushing to $o";
     git push $o;
   done; 
