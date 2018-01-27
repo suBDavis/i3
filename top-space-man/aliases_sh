@@ -1,4 +1,6 @@
 alias fucking="sudo";
+alias ls="exa-linux-x86_64";
+
 ssh-start() {
   eval `ssh-agent -s`
 }
@@ -80,4 +82,7 @@ gpush () {
 }
 findbigfiles () {
   find / -xdev -type f -size +100M 2>/dev/null
+}
+wificonnect () {
+  nmcli device wifi con "$1" password "$2"
 }
