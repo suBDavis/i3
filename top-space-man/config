@@ -21,8 +21,21 @@ font pango:DejaVu Sans Mono 10
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
 
-# start a terminal
+exec --no-startup-id wmctrl -c Plasma
+for_window [title="Desktop — Plasma"] kill;
+
 bindsym Mod1+Return exec --no-startup-id i3-sensible-terminal
+
+## Avoid tiling popups, dropdown windows from plasma
+# for the first time, manually resize them, i3 will remember the setting for floating windows
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
 
 # kill focused window
 bindsym Mod1+q kill
@@ -158,16 +171,16 @@ bar {
         position top
         #height 22
 
-        #colors {
-        #        focused_workspace #32CD32 #008000 #ffffff
-        #}
+        colors {
+                statusline #00A5FF #that neon blue
+        }
 }
 
 # Set display
 # exec --no-startup-id xrandr --auto --output VGA1 --mode 1280x1024 --left-of HDMI1
 
 # Set background
-exec --no-startup-id feh --bg-scale /home/brandon/cloud/pictures/Backgrounds/Pipe.jpg
+exec --no-startup-id feh --bg-scale /home/brandon/cloud/pictures/Backgrounds/pixelhogwarts.jpg
 
 # Start InSync
 exec --no-startup-id /usr/bin/insync start
@@ -176,7 +189,7 @@ exec --no-startup-id /usr/bin/insync start
 # exec --no-startup-id /usr/bin/nm-applet
 
 # Wicd
-exec --no-startup-id wicd-client --tray &
+# exec --no-startup-id wicd-client --tray &
 
 # Touchpad Disable...
 exec --no-startup-id syndaemon -i 1 -KRd -t
@@ -188,7 +201,7 @@ exec --no-startup-id /usr/bin/fluxgui &
 bindsym Mod1+Shift+s exec --no-startup-id i3lock -i /home/brandon/cloud/pictures/Backgrounds/desert.jpg
 
 # GAPS
-gaps inner 12
+gaps inner 18
 gaps outer 0
 # for_window [class="^.*"] border pixel 0 # leave title bar undrawn
 new_window pixel 3
