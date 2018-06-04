@@ -134,4 +134,5 @@ alias git=hub
 
 if [ "$TERM" != "linux" ]; then
     source ~/github.com/pureline/pureline ~/.pureline.conf
+    export PS1="$PS1\n~$"
 fi
